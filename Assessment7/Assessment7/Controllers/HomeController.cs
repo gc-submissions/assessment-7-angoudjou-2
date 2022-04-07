@@ -12,15 +12,21 @@ namespace Assessment7.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        ZooClient zo;
+        public HomeController(ILogger<HomeController> logger, ZooClient _zo)
         {
             _logger = logger;
+            zo = _zo;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View( await zo.GetAnimalsAsync());
+        } 
+        
+        public async Task<IActionResult> Species([FromForm] string SpeciesName)
+        {
+            return View( await zo.GetSpecieAsync(SpeciesName));
         }
 
         public IActionResult Privacy()

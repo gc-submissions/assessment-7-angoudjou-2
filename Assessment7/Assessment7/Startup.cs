@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Assessment7.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +25,8 @@ namespace Assessment7
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddHttpClient<ZooClient>(http=> http.BaseAddress =new Uri(@"https://gc-zoo.surge.sh/api/"));
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
