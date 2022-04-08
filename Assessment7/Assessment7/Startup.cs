@@ -25,7 +25,7 @@ namespace Assessment7
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddHttpClient<ZooClient>(http=> http.BaseAddress =new Uri(@"https://gc-zoo.surge.sh/api/"));
+            services.AddHttpClient<ZooClient>(http=> http.BaseAddress =new Uri(Configuration["zooUrl"]));
             
         }
 

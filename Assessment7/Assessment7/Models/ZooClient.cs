@@ -23,9 +23,9 @@ namespace Assessment7.Models
             if (response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
-                var planet = JsonSerializer.Deserialize<ZooResponse>(content);
+                var res = JsonSerializer.Deserialize<ZooResponse>(content);
 
-                return planet.results;
+                return res.results;
             }
 
             return new Annimal[0];
@@ -38,9 +38,9 @@ namespace Assessment7.Models
             if (response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
-                var planet = JsonSerializer.Deserialize<SpecieResponse>(content);
+                var res = JsonSerializer.Deserialize<SpecieResponse>(content);
 
-                return planet;
+                return res;
             }
 
             return null;
